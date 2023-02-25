@@ -1,13 +1,13 @@
-# BillboardTopTen
+# BillboardVisualizer
 
-[BillboardTopTen][heroku] is a web application that allows music enthusiasts to explore Billboard's top ten charts throughout history. Inspired by [Billboard charts][Billboard], BillboardTopTen is built using an Express server on the backend and React.JS on the Front-end.
+[BillboardVisualizer][heroku] is a web application that allows music enthusiasts to explore Billboard's top ten charts throughout history. Inspired by [Billboard charts][Billboard], BillboardTopTen is built using an Express server on the backend and React.JS on the Front-end.
 
 ![BillboardTopTenImage](public/ImageForReadMe.jpg?raw=true "BillboardTopTenImage")
 
 [heroku]: https://billboardtopten.herokuapp.com/
 [Billboard]: http://www.billboard.com/charts
 
-## BillboardTopTen Features
+## BillboardVisualizer Features
 
 * Dynamic visualization of Billboard's top ten charts for every week
 * Week's top song playing while charts are displayed
@@ -17,11 +17,11 @@
 * Album Images associated with each artist on the chart
 
 
-## BillboardTopTen Walk-through
+## BillboardVisualizer Walk-through
 
-### BillboardTopTen Web Scraping and Search APIs
+### BillboardVisualizer Web Scraping and Search APIs
 
-BillboardTopTen depends on web scraping HTML form [Billboard charts][Billboard] to retrieve all of the charts. A Python script using [billboard.py][billboardpy] API for accessing music charts was written to scrape ten songs for each chart. Each song in a chart contained the following fields: title, artist, weeks, rank, spotifyId, and spotifyLink.
+BillboardVisualizer depends on web scraping HTML form [Billboard charts][Billboard] to retrieve all of the charts. A Python script using [billboard.py][billboardpy] API for accessing music charts was written to scrape ten songs for each chart. Each song in a chart contained the following fields: title, artist, weeks, rank, spotifyId, and spotifyLink.
 
 [billboardpy]: https://github.com/guoguo12/billboard-charts
 
@@ -113,7 +113,7 @@ File.write("public/charts/electric/previewUrls.json", JSON.generate(trackMeta))
 
 ### Data Visualization and Graphing
 
-BillboardTopTen takes advantage of React.JS rapid render library for smooth visualization of Billboard's charts. There are two separate React components in charge of data visualization for BillboardTopTen: Charts component and Graph component.
+BillboardVisualizer takes advantage of React.JS rapid render library for smooth visualization of Billboard's charts. There are two separate React components in charge of data visualization for BillboardTopTen: Charts component and Graph component.
 
 The first component is the charts component. This component displays a track's progression over time by drawing out distinct lines following a tracks ranking. Using a set velocity, the lines are animated across the screen.
 
@@ -280,9 +280,9 @@ class Graph extends React.Component{
 
 ### Music
 
-BillboardTopTen plays music synchronously with it's visuals. For every week, BillboardTopTen will play the number one ranked track in the background. Through the used of React Sound library, sound component's containing track URL's will play music.
+BillboardVisualizer plays music synchronously with it's visuals. For every week, BillboardVisualizer will play the number one ranked track in the background. Through the used of React Sound library, sound component's containing track URL's will play music.
 
-BillboardTopTen makes use of React's rapid state handling to control which component is playing music and at what volume. BillboardTopTen is able to seamless fade in fade out track samples.
+BillboardVisualizer makes use of React's rapid state handling to control which component is playing music and at what volume. BillboardVisualizer is able to seamless fade in fade out track samples.
 
 #### Sample Music Snippet
 
@@ -329,7 +329,7 @@ componentDidUpdate() {
 ```
 ### Date and Genre Picker
 
-A feature of BillboardTopTen that can keep users engaged for extended periods of time is the ability to explore different music genres and dates for Billboard's charts.
+A feature of BillboardVisualizer that can keep users engaged for extended periods of time is the ability to explore different music genres and dates for Billboard's charts.
 
 #### Date Picker Code Snippet
 ```javascript
