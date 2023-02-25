@@ -1,0 +1,405 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+body {
+    background: black;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+.audio {
+    height: 0px;
+    width: 0px;
+    position: absolute;
+}
+
+#mainContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+#modalDescription {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    text-align: center;
+    border-top: 1px solid white;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    width: 79%;
+    border-bottom: 1px solid white;
+}
+
+#modalPlayButton {
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 20px;
+    width: 30px;
+    height: 30px;
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+#modalPlayButton:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: black;
+}
+
+#loader {
+    margin-top: 40px;
+    height: 50px;
+    width: 50px;
+    padding: 20px;
+}
+
+#modalHeadphonesImg {
+    width: 25px;
+    height: 25px;
+    margin-top: 40px;
+}
+
+#modalFooter {
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* GRAPH */
+
+#graph {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 579px;
+}
+
+#titleBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    border-bottom: 1px solid #ccc;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+#navLogo {
+    margin-left: 10px;
+}
+
+#billboard-logo {
+    margin-right: 15px;
+}
+
+#navHeader {
+    margin-right: 60px;
+}
+
+#titleArtist {
+    color: #FF6961;
+    font-weight: bold;
+    margin-right: 7px;
+}
+
+#titleDate {
+    margin-left: 7px;
+}
+
+.toggle-sound {
+    margin-right: 35px;
+    cursor: pointer;
+    width: 25px;
+    font-size: 25px;
+    transition: all .3s;
+}
+
+.toggle-sound:hover {
+    color: #FF6961;
+}
+
+#trackList {
+    width: 250px;
+    height: 100%;
+}
+
+.albumImage {
+    margin-right: 30px;
+    min-width: 50px;
+    border-radius: 25px;
+}
+
+.trackBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 50px;
+    font-weight: 300;
+    width: inherit;
+    margin-bottom: 15px;
+    transition: all 2910ms linear;
+    font-family: 'Roboto', sans-serif;
+}
+
+#stagingArea {
+    width: 100%;
+    height: 80px;
+    background: rgb(0, 0, 0);
+    position: relative;
+    top: 70px;
+    border-top: 1px solid black;
+}
+
+#chart {
+    width: 700px;
+    height: 520px;
+    background-color: black;
+    border-left: 1px solid white;
+}
+
+@-webkit-keyframes hvr-pulse {
+    25% {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+
+    75% {
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+    }
+}
+
+@keyframes hvr-pulse {
+    25% {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+
+    75% {
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+    }
+}
+
+.hvr-pulse {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-animation-name: hvr-pulse;
+    animation-name: hvr-pulse;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+#chart-wrap-wrapper{
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+#chart-wrap-wrapper #stagingArea {
+    top: 0px;
+}
+
+#chart-wrap {
+    display: flex;
+    flex-direction: row;
+    border:none;
+}
+
+#chart-y-axis {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;;
+    align-items: flex-end;
+    height: 529px;
+    margin-top: 46.5px;
+    list-style: none;
+}
+
+#chart-y-axis li {
+    margin-bottom: 36px;
+    font-weight: 300;
+}
+
+/* TABS */
+
+#tabs {
+    height: 600px;
+    margin-top: 30px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+#tabHeaders {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+.tab {
+    width: 50%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: all .3s;
+}
+
+#genreTab {
+    border-left: 1px solid white;
+    border-radius: 0px 10px 10px 0px;
+}
+
+#datePickerTab {
+    border-radius: 10px 0px 0px 10px;
+}
+
+#datePicker {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 579px;
+}
+
+.decade {
+    cursor: default;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    font-weight: 300;
+    height: 100px;
+    width: 300px;
+    padding-top: 5px;
+}
+
+.decadeHeader {
+    margin-right: 25px;
+    transition: color .2s;
+}
+
+.decadeYears {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    height: 100px;
+}
+
+.decadeYear {
+    margin: 0px 5px;
+    margin-bottom: 6px;
+}
+
+.decadeYear:hover {
+    color: mediumaquamarine;
+    transition: color .2s;
+    cursor: pointer;
+}
+
+.months {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    height: 100px;
+}
+
+.month:hover {
+    color: mediumaquamarine;
+    transition: color .2s;
+    cursor: pointer;
+}
+
+.month {
+    margin: 0px 6px;
+    margin-bottom: 6px;
+}
+
+#genres {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 300px;
+    margin-top: 35px;
+    font-weight: bold;
+}
+
+.genre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    height: 140px;
+    cursor: pointer;
+    background-size: cover;
+    margin-bottom: 10px;
+}
+
+#hot100Genre {
+    background-image: url('/Hot100.png');
+}
+
+#alternativeGenre {
+    background-image: url('/Alternative.png');
+}
+
+#hiphopGenre {
+    background-image: url('/HipHop.png');
+}
+
+#countryGenre {
+    background-image: url('/Country.png');
+}
+
+#rapGenre {
+    background-image: url('/Rap.png');
+}
+
+#electricGenre {
+    background-image: url('/EDM.png')
+}
