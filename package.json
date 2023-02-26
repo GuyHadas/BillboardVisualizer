@@ -12,7 +12,7 @@
     "build": "./node_modules/.bin/webpack ."
   },
   "engines": {
-    "node": "7.0.0",
+    "node": "16.3.2",
     "npm": "3.10.8"
   },
   "keywords": [],
