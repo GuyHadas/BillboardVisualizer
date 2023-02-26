@@ -355,7 +355,7 @@ class Home extends React.Component {
     if(trackURLSoundComponentOne){
       return <Sound playStatus={this.state.soundComponentOneStatus}
                     volume={this.state.volOne}
-                    url={this.state.trackURLSoundComponentOne}
+                    url={trackURLSoundComponentOne}
                     onFinishedPlaying={this.handleSongFinishedPlayingOne}/>;
     }
   }
@@ -363,7 +363,7 @@ class Home extends React.Component {
   songComponentTwo(trackURLSoundComponentTwo) {
     if(trackURLSoundComponentTwo){
       return <Sound playStatus={this.state.soundComponentTwoStatus}
-                    url={this.state.trackURLSoundComponentTwo}
+                    url={trackURLSoundComponentTwo}
                     volume={this.state.volTwo}
                     onFinishedPlaying={this.handleSongFinishedPlayingTwo}/>;
     }
@@ -455,8 +455,8 @@ class Home extends React.Component {
         albumImages={this.state.albumImages[this.state.genre]}
         getColorForTitle={this.getColorForTitle}
         />;
-      const trackURLSoundComponentOne = this.state.trackURLSoundComponentOne;
-      const trackURLSoundComponentTwo = this.state.trackURLSoundComponentTwo;
+      const trackURLSoundComponentOne = `/playSong?songUrl=${this.state.trackURLSoundComponentOne}`;
+      const trackURLSoundComponentTwo = `/playSong?songUrl=${this.state.trackURLSoundComponentTwo}`;
 
       audioComponent =
         <div>
