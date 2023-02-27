@@ -20,8 +20,13 @@ class Graph extends React.Component{
       if (nextTrackRank === 0) {
         nextTrackRank = stagingAreaRank; // if track is not in next week's charts, animate to bottom of list
       }
-      let albumImage = this.props.albumImages[`${track.artist}/${track.title}`];
-      albumImage = albumImage ? albumImage : 'http://24.media.tumblr.com/tumblr_m3j315A5l31r6luwpo1_500.png';
+      let albumImage = this.props.albumImages[`${track.artist}/${track.title}`] || 'https://i.imgur.com/nszu54A.jpeg';
+
+      if (!_.startsWith(albumImage, 'https')) {
+        console.log(albumImage)
+        albumImage = `/showAlbumArt?albumArtUrl=${albumImage}`;
+      }
+
       return <Track key={track.title} track={track} nextTrackRank={nextTrackRank} albumImage={albumImage} getColorForTitle={this.props.getColorForTitle}/>;
     });
 
