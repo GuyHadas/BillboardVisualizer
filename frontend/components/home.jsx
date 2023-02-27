@@ -13,6 +13,8 @@ import Chart from './chart.jsx';
 import Tabs from './tabs.jsx';
 import IntroModal from './introModal.jsx';
 
+const fullVolume = 50
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -33,7 +35,7 @@ class Home extends React.Component {
       trackURLSoundComponentTwo: null, //track url set on Sound component two
       soundComponentOneStatus: Sound.status.PLAYING,
       soundComponentTwoStatus: Sound.status.STOPPED,
-      volOne: 100,
+      volOne: fullVolume,
       volTwo: 0,
       isSoundOn: true,
       genre: 'hot100',
@@ -157,8 +159,8 @@ class Home extends React.Component {
     const trackMetaData = this.state.trackMetaData[currentGenre];
     const charts = this.state.charts[currentGenre];
 
-    let volOne = this.activeSoundComponent === 'one' ? 0 : 100;
-    let volTwo = this.activeSoundComponent === 'one' ? 100 : 0;
+    let volOne = this.activeSoundComponent === 'one' ? 0 : fullVolume;
+    let volTwo = this.activeSoundComponent === 'one' ? fullVolume : 0;
     let soundComponentOneStatus;
     let soundComponentTwoStatus;
     if(this.state.isSoundOn){
@@ -197,8 +199,8 @@ class Home extends React.Component {
     const trackMetaData = this.state.trackMetaData[currentGenre];
     const charts = this.state.charts[currentGenre];
 
-    let volOne = this.activeSoundComponent === 'one' ? 100 : 0;
-    let volTwo = this.activeSoundComponent === 'one' ? 0 : 100;
+    let volOne = this.activeSoundComponent === 'one' ? fullVolume : 0;
+    let volTwo = this.activeSoundComponent === 'one' ? 0 : fullVolume;
     let trackURLSoundComponentOne = this.activeSoundComponent === 'one' ? trackMetaData[this.getDate(charts, this.i)]['previewUrl'] :
                                               trackMetaData[this.getDate(charts, this.i + 1)]['previewUrl'];
     let trackURLSoundComponentTwo = this.activeSoundComponent === 'one' ? trackMetaData[this.getDate(charts, this.i + 1)]['previewUrl'] :
@@ -260,8 +262,8 @@ class Home extends React.Component {
       });
     }
 
-    let volOne = this.activeSoundComponent === 'one' ? 0 : 100;
-    let volTwo = this.activeSoundComponent === 'one' ? 100 : 0;
+    let volOne = this.activeSoundComponent === 'one' ? 0 : fullVolume;
+    let volTwo = this.activeSoundComponent === 'one' ? fullVolume : 0;
     let trackURLSoundComponentOne = this.activeSoundComponent === 'one' ? trackMetaData[this.getDate(charts, this.i + 1)]['previewUrl'] :
                                               trackMetaData[this.getDate(charts, this.i)]['previewUrl'];
     let trackURLSoundComponentTwo = this.activeSoundComponent === 'one' ? trackMetaData[this.getDate(charts, this.i)]['previewUrl'] :
@@ -312,17 +314,17 @@ class Home extends React.Component {
       if (this.activeSoundComponent === 'one') {
         this.fadeOutOneFadeInTwoInterval = setInterval(() => {
           this.setState({
-            volOne: this.state.volOne - 1.5,
-            volTwo: this.state.volTwo + 1.5
+            volOne: Math.max(this.state.volOne - 1.5, 0),
+            volTwo: Math.min(this.state.volTwo + 1.5, fullVolume)
           });
-        }, (1000 / 30));
+        }, (1000 / 25));
       } else {
         this.fadeOutTwoFadeInOneInterval = setInterval(() => {
           this.setState({
-            volOne: this.state.volOne + 1.5,
-            volTwo: this.state.volTwo - 1.5
+            volOne: Math.min(this.state.volOne + 1.5, fullVolume),
+            volTwo: Math.max(this.state.volTwo - 1.5, 0)
           });
-        }, (1000 / 30));
+        }, (1000 / 25));
       }
     }
   }
