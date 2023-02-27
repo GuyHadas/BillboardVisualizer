@@ -23,7 +23,6 @@ class Graph extends React.Component{
       let albumImage = this.props.albumImages[`${track.artist}/${track.title}`] || 'https://i.imgur.com/nszu54A.jpeg';
 
       if (!_.startsWith(albumImage, 'https')) {
-        console.log(albumImage)
         albumImage = `/showAlbumArt?albumArtUrl=${albumImage}`;
       }
 
